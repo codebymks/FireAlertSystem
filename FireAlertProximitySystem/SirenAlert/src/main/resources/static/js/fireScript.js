@@ -106,6 +106,7 @@ async function updateFire(event) {
     }
 }
 
+//delete fire
 async function deleteFire(id) {
     console.log("deleting fire with ID: ", id);
     if (!confirm("Are you sure you want to delete this Fire?")) return;
@@ -126,11 +127,8 @@ async function deleteFire(id) {
     }
 }
 
-// Wait for page to load
 document.addEventListener("DOMContentLoaded", () => {
     loadFires();
-    // attach the fire creation function to the button
     document.getElementById("createFireBtn").addEventListener("click", createFire);
-
     document.getElementById("updateFireForm").addEventListener("submit", updateFire);
 });
