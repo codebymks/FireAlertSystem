@@ -1,16 +1,16 @@
 console.log("Map script loaded!");
 
-// Create the map centered on Los Angeles
+//Create the map centered on Los Angeles
 const map = L.map("map").setView([34.03, -118.15], 10);
 
-// Add OpenStreetMap tiles
+//Add OpenStreetMap tiles
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
-// DivIcons for emojis
+//DivIcons for emojis
 const sirenIcon = L.divIcon({
     html: "🚨",
     className: "emoji-marker",
@@ -25,7 +25,7 @@ const fireIcon = L.divIcon({
     iconAnchor: [15, 30]
 });
 
-// Add sirens to the map
+//Add sirens to the map
 async function addSirensToMap() {
     try {
         const res = await fetch(`${API_BASE_URL}/sirens`);
@@ -43,7 +43,7 @@ async function addSirensToMap() {
     }
 }
 
-// Add fires to the map
+//Add fires to the map
 async function addFiresToMap() {
     try {
         const res = await fetch(`${API_BASE_URL}/fires`);
@@ -61,7 +61,6 @@ async function addFiresToMap() {
     }
 }
 
-// Load everything
 document.addEventListener("DOMContentLoaded", () => {
     addSirensToMap();
     addFiresToMap();
