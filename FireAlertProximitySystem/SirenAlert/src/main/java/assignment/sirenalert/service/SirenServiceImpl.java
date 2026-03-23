@@ -55,13 +55,11 @@ public class SirenServiceImpl implements SirenService {
     @Override
     public void deleteSiren(int id) {
         Siren siren = getSirenById(id);
-
-        // Remove from all fires first
         List<Fire> fires = fireRepository.findAll();
+        //Remove the siren from each fire 
         fires.forEach(f -> f.getSirens().removeIf(s -> s.getSirenId() == id));
         fireRepository.saveAll(fires);
 
-        // Now safe to delete
         sirenRepository.deleteById(id);
     }
 }
