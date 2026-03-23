@@ -66,12 +66,11 @@ public class FireServiceImpl implements FireService {
         Fire fire = fireRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Fire not found"));
 
-        // Reset all affected sirens
+        // Reset all affected sirens back to peace.
         List<Siren> affectedSirens = fire.getSirens();
         affectedSirens.forEach(s -> s.setStatus(SirenStatus.PEACE));
         sirenRepository.saveAll(affectedSirens);
 
-        // Delete fire
         fireRepository.delete(fire);
     }
 
