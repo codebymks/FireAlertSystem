@@ -1,7 +1,6 @@
 console.log("Siren script loaded!");
 
-
-// Create siren
+//Create siren
 async function createSirens() {
 
     const siren = {
@@ -29,8 +28,7 @@ async function createSirens() {
     }
 }
 
-
-// read sirens
+//read sirens
 async function loadSirens() {
     try {
         const res = await fetch(`${API_BASE_URL}/sirens`);
@@ -83,8 +81,6 @@ function showUpdateForm(id, lat, lon, status, outOfService) {
     document.getElementById('updateSirenForm').dataset.originalOutOfService = outOfService || '';
 }
 
-
-
 //Update siren
 async function updateSiren(event) {
     event.preventDefault();
@@ -94,13 +90,12 @@ async function updateSiren(event) {
     const isOutOfService = document.getElementById('updateOutOfServiceCheckbox').checked;
     const originalTimestamp = document.getElementById('updateSirenForm').dataset.originalOutOfService;
 
-    // Determine the correct timestamp
+    //Determine the correct timestamp
     let outOfServiceSince;
     if (!isOutOfService) {
-        // user unchecked → clear it
         outOfServiceSince = null;
     } else {
-        // user checked → set new timestamp only if original was empty
+        //Set new timestamp only if original was empty
         outOfServiceSince = originalTimestamp || new Date().toISOString();
     }
 
@@ -129,8 +124,6 @@ async function updateSiren(event) {
     }
 }
 
-
-
 //Delete siren
 async function deleteSiren(id) {
     if (!confirm('Are you sure you want to delete this siren?')) return;
@@ -147,18 +140,11 @@ async function deleteSiren(id) {
     }
 }
 
-
-// Wait for page
 document.addEventListener("DOMContentLoaded", () => {
-
     loadSirens();
-
-    //add siren button
     document
         .getElementById("createSirenBtn")
         .addEventListener("click", createSirens);
-
-    //submit handler for update form
     document
         .getElementById("updateSirenForm")
         .addEventListener("submit", updateSiren);
