@@ -11,6 +11,6 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v5
         with:
-          context: ./FireAlertSystem
-          file: ./FireAlertSystem/Dockerfile
+          context: ./FireAlertProximitySystem/SirenAlert
+          file: ./FireAlertProximitySystem/SirenAlert/Dockerfile
           push: false
