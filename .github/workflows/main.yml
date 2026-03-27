@@ -24,4 +24,4 @@ jobs:
           context: ./FireAlertProximitySystem/SirenAlert
           file: ./FireAlertProximitySystem/SirenAlert/Dockerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}/fire-alert-system:latest
+          tags: ghcr.io/firealertsystem/fire-alert-system:latest
